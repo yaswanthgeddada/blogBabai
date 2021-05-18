@@ -35,7 +35,7 @@ const Profile = () => {
   };
 
   const getUserblogs = useCallback(async () => {
-    const userBlogs = await getBlogsByUserId(user.uid);
+    const userBlogs = await getBlogsByUserId(currentUser?.uid);
     console.log(
       "%cGET_POSTS_OF_USER (getUserblogs)",
       "color:orange; font-weight:bold",

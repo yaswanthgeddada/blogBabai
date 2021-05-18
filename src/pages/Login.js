@@ -18,7 +18,14 @@ const Login = () => {
         addUserToFirebase(user);
         sessionStorage.setItem(
           "currentUser",
-          JSON.stringify(user.user.providerData[0])
+          JSON.stringify({
+            displayName: user.user.providerData[0].displayName,
+            email: user.user.providerData[0].email,
+            phoneNumber: user.user.providerData[0].phoneNumber,
+            photoURL: user.user.providerData[0].photoURL,
+            providerId: user.user.providerData[0].providerId,
+            uid: user.user.uid,
+          })
         );
 
         history.push("/");
