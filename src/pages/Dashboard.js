@@ -15,7 +15,7 @@ const Dashboard = () => {
     if (localUser) {
       console.log(localUser);
     } else {
-      history.push("/login");
+      // history.push("/login");
     }
   }, [history, localUser]);
 

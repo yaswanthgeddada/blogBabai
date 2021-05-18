@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { FaFacebook, FaGoogle } from "react-icons/fa";
 import { facebookProvider, googleProvider } from "../config/authMethods";
 import socialMediaAuth from "../services/auth";
@@ -9,6 +9,14 @@ import { addUser, getUserByUserId } from "../services/firebase";
 const Login = () => {
   let history = useHistory();
   const { setCurrentUser } = useContext(UserContext);
+
+  const localUser = JSON.parse(sessionStorage.getItem("currentUser"));
+
+  useEffect(() => {
+    if (localUser) {
+      history.push("/");
+    }
+  }, [localUser, history]);
 
   const handdleLogin = (provider) => {
     socialMediaAuth(provider).then((user) => {
