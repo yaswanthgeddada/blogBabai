@@ -33,13 +33,13 @@ function App() {
                 <Route
                   path="/"
                   exact
-                  component={currentUser.displayName !== "" ? Dashboard : Login}
+                  component={localUser?.displayName !== "" ? Dashboard : Login}
                 />
                 <Route path="/login" exact component={Login} />
                 <Route
                   path="/profile"
                   exact
-                  component={currentUser.displayName !== "" ? Profile : Login}
+                  component={localUser?.displayName !== "" ? Profile : Login}
                 />
               </Switch>
             </Suspense>

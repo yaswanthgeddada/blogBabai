@@ -7,16 +7,17 @@ import { getAllBlogs } from "../services/firebase";
 
 const Dashboard = () => {
   const user = firebase.auth().currentUser;
+  const localUser = JSON.parse(sessionStorage.getItem("currentUser"));
   const history = useHistory();
   const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
-    if (user) {
-      console.log(user);
+    if (localUser) {
+      console.log(localUser);
     } else {
       history.push("/login");
     }
-  }, [history, user]);
+  }, [history, localUser]);
 
   useEffect(() => {
     const getBlogs = async () => {

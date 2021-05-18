@@ -1,11 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link, useHistory } from "react-router-dom";
-import UserContext from "../context/userContext";
 import { AiOutlineLogout } from "react-icons/ai";
 import firebase from "../config/firebase-config";
 
 const Topbar = () => {
-  const { currentUser } = useContext(UserContext);
+  const currentUser = JSON.parse(sessionStorage.getItem("currentUser"));
   const history = useHistory();
 
   const logoutHandler = () => {

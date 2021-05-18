@@ -1,20 +1,13 @@
-import React, {
-  useContext,
-  useRef,
-  useEffect,
-  useState,
-  useCallback,
-} from "react";
+import React, { useRef, useEffect, useState, useCallback } from "react";
 import Topbar from "./../components/Topbar";
 import Blog from "./../components/Blog";
-import UserContext from "../context/userContext";
 import firebase from "../config/firebase-config";
 import { getBlogsByUserId } from "../services/firebase";
 
 const Profile = () => {
   const [blogs, setBlogs] = useState([]);
+  const currentUser = JSON.parse(sessionStorage.getItem("currentUser"));
 
-  const { currentUser } = useContext(UserContext);
   const user = firebase.auth().currentUser;
   const blogText = useRef();
   const BlogTitle = useRef();
